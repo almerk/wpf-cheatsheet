@@ -14,6 +14,7 @@ namespace StudyWPF.ViewModels.Calendario.Entities
         public bool HasTime { get; private set; }
         public string Description { get; set; }
         public EventStatus Status { get; set; }
+        public bool IsCurrentUserActiveRelated { get; private set; }
         public ObservableCollection<Subject> Related { get; private set; }
         public ObservableCollection<Subject> Acceptors { get; private set; }
         public ObservableCollection<Subject> Perfomers { get; private set; }
