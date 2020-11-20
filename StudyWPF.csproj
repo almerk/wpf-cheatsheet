@@ -63,6 +63,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\Calendario\Entities\Comment.cs" />
+    <Compile Include="ViewModels\Calendario\Entities\ReadRecord.cs" />
+    <Compile Include="ViewModels\Calendario\Enums.cs" />
+    <Compile Include="ViewModels\Calendario\Entities\Event.cs" />
+    <Compile Include="ViewModels\Calendario\Entities\Group.cs" />
+    <Compile Include="ViewModels\Calendario\Entities\Subject.cs" />
+    <Compile Include="ViewModels\Calendario\Entities\User.cs" />
+    <Compile Include="ViewModels\Calendario\Utils\Entity.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
