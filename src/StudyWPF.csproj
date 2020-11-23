@@ -65,7 +65,6 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\Calendario\Entities\Comment.cs" />
     <Compile Include="ViewModels\Calendario\Entities\ReadRecord.cs" />
-    <Compile Include="ViewModels\Calendario\Enums.cs" />
     <Compile Include="ViewModels\Calendario\Entities\Event.cs" />
     <Compile Include="ViewModels\Calendario\Entities\Group.cs" />
     <Compile Include="ViewModels\Calendario\Entities\Subject.cs" />
@@ -129,6 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\calendario.dto\StudyWPF.Calendario.DTO\StudyWPF.Calendario.DTO.csproj">
+      <Project>{1ef9bdd2-9b7f-4262-9b31-ce66c73b343c}</Project>
+      <Name>StudyWPF.Calendario.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

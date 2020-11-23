@@ -10,6 +10,5 @@ namespace StudyWPF.ViewModels.Calendario.Entities
     {
         public string Appeal { get; private set; }
         public string ShortName { get; private set; }
-        public string GroupId { get; private set; }
     }
 }

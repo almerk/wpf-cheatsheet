@@ -9,8 +9,8 @@ namespace StudyWPF.ViewModels.Calendario.Entities
 {
     public class Comment : Entity
     {
-        public string User { get; set; } 
-        public DateTime  DateTime { get; set; }
+        public User User { get; set; } 
+        public DateTime DateTime { get; set; }
         public string Text { get; set; }
     }
 }

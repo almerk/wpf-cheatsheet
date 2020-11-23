@@ -4,13 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudyWPF.ViewModels.Calendario
+namespace StudyWPF.Calendario.DTO
 {
-   public enum EventStatus 
-   {
+    public enum EventStatus 
+    {
         Late,
         Coming,
         Done,
         Archive
-   }
+    }
+
+    public enum DateBelonging
+    {
+        Start,
+        Middle,
+        End
+    }
 }

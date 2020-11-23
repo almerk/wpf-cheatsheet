@@ -6,7 +6,8 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:StudyWPF"
         mc:Ignorable="d"
-        Title="Informer" Height="450" Width="800">
+        Title="Informer" Height="450" Width="800"
+        SaveWindowPosition="True">
     <mah:MetroWindow.Resources>
         <ResourceDictionary Source="/Resources/MainWindowDictionary.xaml"/>
     </mah:MetroWindow.Resources>
