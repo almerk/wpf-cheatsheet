@@ -16,6 +16,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
         public IEnumerable<ReadRecord> ReadRecords { get; internal set; }
         public IEnumerable<Calendar> Calendars { get; internal set; }
         public IEnumerable<CalendarType> CalendarTypes { get; internal set; }
+        public IEnumerable<Occurence> Occurences { get; internal set; }
     }
 #endif
 }

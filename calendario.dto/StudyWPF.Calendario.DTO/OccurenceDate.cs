@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.Calendario.DTO
 {
-    public class OccurenceDate
+    public struct OccurenceDate
     {
         public DateTime Value { get; set; }
         public bool HasTime { get; set; }

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.Calendario.DTO
 {
-    public class ReadRecord
+    public sealed class ReadRecord: Interfaces.ICalendarioDTO
     {
-        public string Id { get; set; }
+        public Occurence Related { get; set; }
         public string ByUser { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime When { get; set; }
+        
     }
 }

@@ -63,13 +63,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\Calendario\Entities\Comment.cs" />
-    <Compile Include="ViewModels\Calendario\Entities\ReadRecord.cs" />
-    <Compile Include="ViewModels\Calendario\Entities\Event.cs" />
-    <Compile Include="ViewModels\Calendario\Entities\Group.cs" />
-    <Compile Include="ViewModels\Calendario\Entities\Subject.cs" />
-    <Compile Include="ViewModels\Calendario\Entities\User.cs" />
-    <Compile Include="ViewModels\Calendario\Utils\Entity.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +127,9 @@
       <Project>{1ef9bdd2-9b7f-4262-9b31-ce66c73b343c}</Project>
       <Name>StudyWPF.Calendario.DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\Calendario\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

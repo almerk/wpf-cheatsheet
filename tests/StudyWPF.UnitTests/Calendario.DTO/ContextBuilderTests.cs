@@ -36,6 +36,12 @@ namespace StudyWPF.UnitTests.Calendario.DTO
             Assert.AreEqual(5, context.Calendars.Count());
             Assert.AreEqual(3, context.CalendarTypes.Count());
         }
+        [TestMethod]
+        public void Events_Exist()
+        {
+            var context = new ContextBuilder().Full().Build();
+            Assert.IsTrue(context.Events.Any());
+        }
     }
 #endif
 }

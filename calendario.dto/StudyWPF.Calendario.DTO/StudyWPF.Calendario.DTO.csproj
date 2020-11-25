@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,8 +54,10 @@
     <Compile Include="Dates\SimpleDate.cs" />
     <Compile Include="DevelopOnly\Context.cs" />
     <Compile Include="DevelopOnly\ContextBuilder.cs" />
+    <Compile Include="DevelopOnly\TestData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="Interfaces\ICalendarioDTO.cs" />
     <Compile Include="Interfaces\IInheritable.cs" />
     <Compile Include="Occurence.cs" />
     <Compile Include="OccurenceDate.cs" />
@@ -62,7 +67,12 @@
     <Compile Include="Subject.cs" />
     <Compile Include="Subjects\User.cs" />
     <Compile Include="ToDoEvent.cs" />
+    <Compile Include="Utils\DerivedTypesConverter.cs" />
+    <Compile Include="Utils\Serialization.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

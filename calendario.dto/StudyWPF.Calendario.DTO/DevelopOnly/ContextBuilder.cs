@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.Calendario.DTO.DevelopOnly
 {
+    //TODO: Move to tests, when client project will be ready
 #if DEBUG
     public class ContextBuilder
     {
@@ -17,8 +18,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
         private List<Event> _events = new List<Event>();
         private List<Comment> _comments = new List<Comment>();
         private List<ReadRecord> _readRecords = new List<ReadRecord>();
-        
-      
+        private List<Occurence> _occurences = new List<Occurence>();
 
         public ContextBuilder() 
         {
@@ -225,6 +225,115 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             return this;
         }
 
+        public ContextBuilder WithEventsAndOccurencies() 
+        {
+            var soosBD = new Event()
+            {
+                Id = CreateId(),
+                CalendarId = CalendarByName("Birthdays").Id,
+                Related = new[] { GetGroupByName("All") },
+                Name = "Soos's birthday",
+                Description = "No one should remind him of it",
+                Dates = new[] { new Dates.SimpleDate() 
+                {
+                    Id = CreateId(),
+                    HasTime = false,
+                    Value = DateTime.Parse("13.07.2020") 
+                } 
+                },
+            };
+            var soosBDComments = new[]
+            {
+                new Comment()
+                {
+                    Id = CreateId(),
+                    EventId = soosBD.Id,
+                    Text = "But i still want to!",
+                    UserId = GetUserByAppeal("Mabel").Id,
+                    DateTime = DateTime.Parse("25.11.2020 12:00")
+                },
+                new Comment()
+                {
+                    Id = CreateId(),
+                    EventId = soosBD.Id,
+                    Text = "Me too",
+                    UserId = GetUserByAppeal("Dipper").Id,
+                    DateTime = DateTime.Parse("25.11.2020 13:45")
+                }
+            };
+            soosBD.Comments = soosBDComments.Select(x => x.Id).ToList();
+            _comments.AddRange(soosBDComments);
+            _events.Add(soosBD);
+            var soosBDOccurences = new[]
+            {
+                new Occurence()
+                {
+                    Date = new OccurenceDate()
+                    {
+                        Value = DateTime.Parse("13.07.2020"),
+                        HasTime = false
+                    },
+                    EventId = soosBD.Id,
+                    Status = EventStatus.Late
+                },
+                new Occurence()
+                {
+                    Date = new OccurenceDate()
+                    {
+                        Value = DateTime.Parse("14.07.2020"),
+                        HasTime = false
+                    },
+                    EventId = soosBD.Id,
+                    Status = EventStatus.Coming
+                },
+                new Occurence()
+                {
+                    Date = new OccurenceDate()
+                    {
+                        Value = DateTime.Parse("15.07.2020"),
+                        HasTime = false
+                    },
+                    EventId = soosBD.Id,
+                    Status = EventStatus.Done
+                },
+                new Occurence()
+                {
+                    Date = new OccurenceDate()
+                    {
+                        Value = DateTime.Parse("14.07.2020"),
+                        HasTime = true
+                    },
+                    EventId = soosBD.Id,
+                    Status = EventStatus.Archive
+                }
+            };
+            _occurences.AddRange(soosBDOccurences);
+            var soosBDReadRecords = new[]
+            {
+                new ReadRecord()
+                {
+                    Related = soosBDOccurences[0],
+                    ByUser = GetUserByAppeal("Waddles").Id,
+                    When = DateTime.Parse("12.07.2020 14:30")
+                },
+                new ReadRecord()
+                {
+                    Related = soosBDOccurences[0],
+                    ByUser = GetUserByAppeal("Mabel").Id,
+                    When = DateTime.Parse("12.07.2020 14:30")
+                }
+            };
+            _readRecords.AddRange(soosBDReadRecords);
+            return this;
+            
+        }
+
+        public ContextBuilder Full() => this
+                .WithGroupsAndUsers()
+                .WithCalendarTypes()
+                .WithCalendars()
+                .WithEventsAndOccurencies();
+
         public Context Build()
             => new Context() 
         {
@@ -234,7 +343,8 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             Events=_events,
             ReadRecords=_readRecords,
             CalendarTypes=_calendarTypes,
-            Calendars = _calendars
+            Calendars = _calendars,
+            Occurences = _occurences,
         };
         
         private static string CreateId() => Guid.NewGuid().ToString();
@@ -256,7 +366,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
         private Subjects.User GetUserByAppeal(string appeal) 
             => _users.Find(x => string.Equals(x.Appeal, appeal, StringComparison.InvariantCultureIgnoreCase));
         private Subjects.Group GetGroupByName(string name) => _groupsAsList.Find(x => x.Name == name);
-
+        private Calendar CalendarByName(string name) => _calendars.Find(x => x.Name == name);
         private CalendarType TypeByName(string name) => _calendarTypes.Find(x => x.Name == name);
     }
 

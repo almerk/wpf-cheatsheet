@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudyWPF.ViewModels.Calendario
+namespace StudyWPF.Calendario.DTO.Interfaces
 {
-    public abstract class Subject:Utils.Entity
+    public interface ICalendarioDTO
     {
-
     }
 }
