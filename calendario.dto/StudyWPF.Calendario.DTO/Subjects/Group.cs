@@ -11,7 +11,7 @@ namespace StudyWPF.Calendario.DTO.Subjects
         public string Name { get; set; }
         public string ParentGroup { get; set; }
         public IEnumerable<string> Users { get; set; } = new string[] { };
-        public IEnumerable<Group> Groups { get; set; } = new Group[] { };
+        public IEnumerable<string> Groups { get; set; } = new string[] { };
         public override string ToString() => Name;
     }
 }

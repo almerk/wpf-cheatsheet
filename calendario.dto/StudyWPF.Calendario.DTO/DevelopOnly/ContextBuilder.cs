@@ -10,7 +10,6 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
 #if DEBUG
     public class ContextBuilder
     {
-        private List<Subjects.Group> _groupsAsTree = new List<Subjects.Group>();
         private List<Subjects.Group> _groupsAsList= new List<Subjects.Group>();
         private List<Subjects.User> _users = new List<Subjects.User>();
         private List<CalendarType> _calendarTypes = new List<CalendarType>();
@@ -115,7 +114,6 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
                 ShortName = "Fiddleford Hadron McGucket",
                 Appeal = "Old man McGucket"
             });
-            _groupsAsTree.Add(allGroup);
             return this;
         }
 
@@ -338,7 +336,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             => new Context() 
         {
             Users=_users,
-            Groups=_groupsAsTree,
+            Groups=_groupsAsList,
             Comments=_comments,
             Events=_events,
             ReadRecords=_readRecords,
@@ -360,7 +358,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
         {
             if (group.Id == null) group.Id = CreateId();
             group.ParentGroup = parent.Id;
-            parent.Groups = parent.Groups.Union(new[] { group }).ToList();
+            parent.Groups = parent.Groups.Union(new[] { group.Id }).ToList();
             _groupsAsList.Add(group);
         }
         private Subjects.User GetUserByAppeal(string appeal) 

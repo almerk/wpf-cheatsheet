@@ -22,8 +22,7 @@ namespace StudyWPF.UnitTests.Calendario.DTO
             var context = new ContextBuilder().WithGroupsAndUsers().Build();
             var allGroup = context.Groups.First();
             Assert.IsNotNull(allGroup);
-            Assert.AreEqual(3, allGroup.Groups.Count());
-            Assert.AreEqual(1, allGroup.Groups.First().Groups.Count());
+            Assert.AreEqual(3, allGroup.Groups.Count());        
         }
         [TestMethod]
         public void Calendars_Created()

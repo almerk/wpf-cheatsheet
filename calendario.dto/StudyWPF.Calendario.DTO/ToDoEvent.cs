@@ -11,6 +11,7 @@ namespace StudyWPF.Calendario.DTO
     {
         [JsonConverter(typeof(Utils.DerivedTypesConverter))]
         public IEnumerable<Subject> Acceptors { get; set; }
+
         [JsonConverter(typeof(Utils.DerivedTypesConverter))]
         public IEnumerable<Subject> Perfomers { get; set; }
     }
