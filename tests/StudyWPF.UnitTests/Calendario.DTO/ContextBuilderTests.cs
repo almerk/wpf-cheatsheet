@@ -13,13 +13,13 @@ namespace StudyWPF.UnitTests.Calendario.DTO
         [TestMethod]
         public void UserTree_ContainsWaddles()
         {
-            var context = new ContextBuilder().WithGroupsAndUsers().Build();
+            var context = new TestContextBuilder().WithGroupsAndUsers().Build();
             Assert.IsNotNull(context.Users.FirstOrDefault(x => x.Appeal == "Waddles"));
         }
         [TestMethod]
         public void GroupTree_IsCreated()
         {
-            var context = new ContextBuilder().WithGroupsAndUsers().Build();
+            var context = new TestContextBuilder().WithGroupsAndUsers().Build();
             var allGroup = context.Groups.First();
             Assert.IsNotNull(allGroup);
             Assert.AreEqual(3, allGroup.Groups.Count());        
@@ -27,7 +27,7 @@ namespace StudyWPF.UnitTests.Calendario.DTO
         [TestMethod]
         public void Calendars_Created()
         {
-            var context = new ContextBuilder()
+            var context = new TestContextBuilder()
                 .WithGroupsAndUsers()
                 .WithCalendarTypes()
                 .WithCalendars()
@@ -38,7 +38,7 @@ namespace StudyWPF.UnitTests.Calendario.DTO
         [TestMethod]
         public void Events_Exist()
         {
-            var context = new ContextBuilder().Full().Build();
+            var context = new TestContextBuilder().Full().Build();
             Assert.IsTrue(context.Events.Any());
         }
     }

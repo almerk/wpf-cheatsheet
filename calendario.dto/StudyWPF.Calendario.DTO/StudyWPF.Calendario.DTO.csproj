@@ -46,18 +46,20 @@
   <ItemGroup>
     <Compile Include="Calendar.cs" />
     <Compile Include="CalendarType.cs" />
+    <Compile Include="Client\Context.cs" />
+    <Compile Include="Client\ContextBuilderService.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Dates\ContinuousDate.cs" />
     <Compile Include="Dates\ContinuousReccurenceDate.cs" />
     <Compile Include="Dates\ReccurenceDate.cs" />
     <Compile Include="Dates\SimpleDate.cs" />
-    <Compile Include="DevelopOnly\Context.cs" />
-    <Compile Include="DevelopOnly\ContextBuilder.cs" />
-    <Compile Include="DevelopOnly\TestData.cs" />
+    <Compile Include="DevelopOnly\TestContextBuilder.cs" />
+    <Compile Include="DevelopOnly\TestRepository.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Interfaces\ICalendarioDTO.cs" />
+    <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\IInheritable.cs" />
     <Compile Include="Occurence.cs" />
     <Compile Include="OccurenceDate.cs" />
@@ -68,6 +70,9 @@
     <Compile Include="Subjects\User.cs" />
     <Compile Include="ToDoEvent.cs" />
     <Compile Include="Utils\DerivedTypesConverter.cs" />
+    <Compile Include="Utils\Deserialization.cs" />
+    <Compile Include="Utils\DeserializationException.cs" />
+    <Compile Include="Utils\NotRecognizedItem.cs" />
     <Compile Include="Utils\Serialization.cs" />
   </ItemGroup>
   <ItemGroup>

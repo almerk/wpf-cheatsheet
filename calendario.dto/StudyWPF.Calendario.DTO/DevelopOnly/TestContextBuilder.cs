@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudyWPF.Calendario.DTO.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +9,24 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
 {
     //TODO: Move to tests, when client project will be ready
 #if DEBUG
-    public class ContextBuilder
+    public class TestContextBuilder
     {
         private List<Subjects.Group> _groupsAsList= new List<Subjects.Group>();
         private List<Subjects.User> _users = new List<Subjects.User>();
         private List<CalendarType> _calendarTypes = new List<CalendarType>();
         private List<Calendar> _calendars = new List<Calendar>();
         private List<Event> _events = new List<Event>();
+        private List<Date> _dates = new List<Date>();
         private List<Comment> _comments = new List<Comment>();
         private List<ReadRecord> _readRecords = new List<ReadRecord>();
         private List<Occurence> _occurences = new List<Occurence>();
 
-        public ContextBuilder() 
+        public TestContextBuilder() 
         {
             
         }
 
-        public ContextBuilder WithGroupsAndUsers() 
+        public TestContextBuilder WithGroupsAndUsers() 
         {
             var allGroup = new Subjects.Group()
             {
@@ -117,7 +119,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             return this;
         }
 
-        public ContextBuilder WithCalendarTypes() 
+        public TestContextBuilder WithCalendarTypes() 
         {
             _calendarTypes = new List<CalendarType>() 
             {
@@ -140,7 +142,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             return this;
         }
 
-        public ContextBuilder WithCalendars() 
+        public TestContextBuilder WithCalendars() 
         {
             var personalCalendars = new[]
             {
@@ -223,7 +225,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             return this;
         }
 
-        public ContextBuilder WithEventsAndOccurencies() 
+        public TestContextBuilder WithEventsAndOccurencies() 
         {
             var soosBD = new Event()
             {
@@ -240,6 +242,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
                 } 
                 },
             };
+            _dates.AddRange(soosBD.Dates);
             var soosBDComments = new[]
             {
                 new Comment()
@@ -326,7 +329,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             
         }
 
-        public ContextBuilder Full() => this
+        public TestContextBuilder Full() => this
                 .WithGroupsAndUsers()
                 .WithCalendarTypes()
                 .WithCalendars()
@@ -343,6 +346,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             CalendarTypes=_calendarTypes,
             Calendars = _calendars,
             Occurences = _occurences,
+            Dates = _dates
         };
         
         private static string CreateId() => Guid.NewGuid().ToString();

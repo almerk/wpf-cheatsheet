@@ -9,7 +9,6 @@ namespace StudyWPF.Calendario.DTO.Interfaces
 {   
     internal interface IInheritable
     {
-        string OfType { get; }
         string TypeUniqueId { get; }
     }
 }

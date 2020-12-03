@@ -8,11 +8,10 @@ using Newtonsoft.Json.Converters;
 
 namespace StudyWPF.Calendario.DTO
 {
-    [JsonObject()]
+ 
     public class Event : Interfaces.IInheritable, Interfaces.ICalendarioDTO
     {
         public string Id { get; set; }
-        public string OfType => GetType().Name;
         public string TypeUniqueId => Id;
         public string CalendarId { get; set; }
         public string Name { get; set; }
