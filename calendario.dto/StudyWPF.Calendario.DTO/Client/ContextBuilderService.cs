@@ -16,23 +16,34 @@ namespace StudyWPF.Calendario.DTO.Client
         }
 
         /// <summary>
-        /// Sequential steps to build full client context
+        /// Sequential steps to build full client context if it does not exists
         /// </summary>
         /// <returns>Calendario DTO context</returns>
-        public Context Build() 
+        public Context Build()
         {
-            return new Context()
-            {
-                Users = _repository.Get<Subjects.User>(),//1
-                Groups = _repository.Get<Subjects.Group>(),//2
-                Dates = _repository.Get<Date>(),//3
-                CalendarTypes = _repository.Get<CalendarType>(),//4
-                Calendars = _repository.Get<Calendar>(),//5
-                Events= _repository.Get<Event>(),//6
-                Comments = _repository.Get<Comment>(),//7
-                Occurences = _repository.Get<Occurence>(),//8
-                ReadRecords = _repository.Get<ReadRecord>()//9
-            };
+            var context = new Context();
+            Build(context);
+            return context;
         }
+            
+
+
+        /// <summary>
+        /// Sequential steps to build full client context
+        /// </summary>
+        public void Build(Context context)
+        {
+            if (context == null) throw new ArgumentNullException("context");
+            context.Users = _repository.Get<Subjects.User>();
+            context.Groups = _repository.Get<Subjects.Group>();
+            context.Dates = _repository.Get<Date>();
+            context.CalendarTypes = _repository.Get<CalendarType>();
+            context.Calendars = _repository.Get<Calendar>();
+            context.Events = _repository.Get<Event>();
+            context.Comments = _repository.Get<Comment>();
+            context.Occurences = _repository.Get<Occurence>();
+            context.ReadRecords = _repository.Get<ReadRecord>();
+        }
+
     }
 }

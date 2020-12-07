@@ -15,16 +15,23 @@ namespace StudyWPF.UnitTests.Calendario.DTO
     {
         public static TestRepository data = new TestRepository();
         [TestMethod]
-        public async Task SerilizeUsers_Success ()
+        public async Task SerilizeEvents_Success ()
         {
-            var json = await data.GetServerJson<Event>();
+            var json = await data.GetJsonEnties<Event>();
             var objects = Deserialization.DeserializeObject<Event[]>(json, data);
         }
 
         [TestMethod]
         public async Task SerilizeOccurencies_Success()
         {
-            var json = await data.GetServerJson<Occurence>();
+            var json = await data.GetJsonEnties<Occurence>();
+        }
+
+        [TestMethod]
+        public async Task SerilizeDates_Success()
+        {
+            var json = await data.GetJsonEnties<Date>();
+            var objects = Deserialization.DeserializeObject<Date[]>(json, data);
         }
     }
 }
