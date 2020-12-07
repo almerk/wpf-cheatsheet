@@ -24,7 +24,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             return _context.Get<T>();
         }
 
-        public async Task<string> GetJsonEnties<T>() where T : Interfaces.ICalendarioDTO
+        public async Task<string> GetJsonEntities<T>() where T : Interfaces.ICalendarioDTO
         {
             return await Task.Run(() => 
             {

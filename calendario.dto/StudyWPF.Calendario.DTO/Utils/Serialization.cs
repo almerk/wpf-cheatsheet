@@ -13,11 +13,18 @@ namespace StudyWPF.Calendario.DTO.Utils
     {
         public static string SerializeJson(this Interfaces.ICalendarioDTO obj) 
         {
+            //var requestTypeIsIInhertiable = obj.GetType().GetInterfaces().Contains(typeof(Interfaces.IInheritable));
             return JsonConvert.SerializeObject(obj, DefaultSerializerSettings);
         }
-        public static string SerializeJson(this IEnumerable<Interfaces.ICalendarioDTO> obj)
+        public static string SerializeJson(this IEnumerable<Interfaces.ICalendarioDTO> objects)
         {
-            return JsonConvert.SerializeObject(obj, DefaultSerializerSettings);
+            //var requestTypeIsIInhertiable = false;
+            //var first = objects.FirstOrDefault();
+            //if (first != null) 
+            //{
+            //    requestTypeIsIInhertiable = first.GetType().GetInterfaces().Contains(typeof(Interfaces.IInheritable));
+            //}
+            return JsonConvert.SerializeObject(objects, DefaultSerializerSettings);
         }
 
         private static JsonSerializerSettings DefaultSerializerSettings =>
@@ -25,7 +32,8 @@ namespace StudyWPF.Calendario.DTO.Utils
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 Converters = new[] { new StringEnumConverter() },
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                TypeNameHandling = TypeNameHandling.Auto
             };
     }
 }

@@ -10,6 +10,6 @@ namespace StudyWPF.Calendario.DTO
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<string> Calendars { get; set; }
+        public IEnumerable<string> Calendars { get; set; } = new string[] { };
     }
 }

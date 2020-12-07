@@ -17,20 +17,20 @@ namespace StudyWPF.UnitTests.Calendario.DTO
         [TestMethod]
         public async Task SerilizeEvents_Success ()
         {
-            var json = await data.GetJsonEnties<Event>();
+            var json = await data.GetJsonEntities<Event>();
             var objects = Deserialization.DeserializeObject<Event[]>(json, data);
         }
 
         [TestMethod]
         public async Task SerilizeOccurencies_Success()
         {
-            var json = await data.GetJsonEnties<Occurence>();
+            var json = await data.GetJsonEntities<Occurence>();
         }
 
         [TestMethod]
         public async Task SerilizeDates_Success()
         {
-            var json = await data.GetJsonEnties<Date>();
+            var json = await data.GetJsonEntities<Date>();
             var objects = Deserialization.DeserializeObject<Date[]>(json, data);
         }
     }

@@ -16,7 +16,8 @@ namespace StudyWPF.Calendario.DTO.Utils
 
             return JsonConvert.DeserializeObject<T>(jsonString, new JsonSerializerSettings() 
             {
-                ContractResolver = new ProxyDeserializeContractResolver(proxyRepository)
+                ContractResolver = new ProxyDeserializeContractResolver(proxyRepository),
+                TypeNameHandling = TypeNameHandling.Auto
             });
         }
         internal class ProxyDeserializeContractResolver : DefaultContractResolver

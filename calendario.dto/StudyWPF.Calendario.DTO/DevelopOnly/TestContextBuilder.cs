@@ -185,7 +185,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
                     }
                 }
             };
-            TypeByName("Personal").Calendars = personalCalendars.Select(x => x.Id);
+            TypeByName("Personal").Calendars = personalCalendars.Select(x => x.Id).ToList();
             var birthdayCalendars = new[]
             {
                 new Calendar()
@@ -201,7 +201,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
 
                 }
             };
-            TypeByName("Birthdays").Calendars = birthdayCalendars.Select(x => x.Id);
+            TypeByName("Birthdays").Calendars = birthdayCalendars.Select(x => x.Id).ToList();
             var adventureCalendars = new[]
              {
                 new Calendar()
@@ -217,7 +217,7 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
                     }
                 }
             };
-            TypeByName("Adventures").Calendars = adventureCalendars.Select(x => x.Id);
+            TypeByName("Adventures").Calendars = adventureCalendars.Select(x => x.Id).ToList();
             _calendars = personalCalendars
                 .Union(birthdayCalendars)
                 .Union(adventureCalendars)
