@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 namespace StudyWPF.Calendario.DTO
 {
  
-    public class Event : Interfaces.IInheritable, Interfaces.ICalendarioDTO
+    public class Event : Interfaces.IInheritable, Interfaces.ICalendarioDTO, Interfaces.IHaveId
     {
         public string Id { get; set; }
         public string TypeUniqueId => Id;

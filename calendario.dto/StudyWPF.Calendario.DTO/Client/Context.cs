@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StudyWPF.Calendario.DTO.Utils;
 
 namespace StudyWPF.Calendario.DTO.Client
 {
@@ -24,21 +25,27 @@ namespace StudyWPF.Calendario.DTO.Client
         public IReadOnlyCollection<Date> Dates { get; internal set; }
         public IReadOnlyCollection<Occurence> Occurences { get; internal set; }
 
-        public IReadOnlyCollection<T> Get<T>() where T : ICalendarioDTO
+        public Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
         {
-            var prop = (from p in this.GetType().GetProperties()
-                        where p.PropertyType.IsGenericType
-                        let type = p.PropertyType.GetGenericArguments()[0]
-                        where type == typeof(T) || type.IsAssignableFrom(typeof(T))
-                        select p).FirstOrDefault();
-            if (prop == null) 
-                return null;
-            var value = prop.GetValue(this, null);
-            if (value == null)
-                return null;
-            return ((IReadOnlyCollection<ICalendarioDTO>)value).OfType<T>().ToList();
-            
+            return Task.Run(()=> 
+            {
+                var prop = (from p in this.GetType().GetProperties()
+                            where p.PropertyType.IsGenericType
+                            let type = p.PropertyType.GetGenericArguments()[0]
+                            where type == typeof(T) || type.IsAssignableFrom(typeof(T))
+                            select p).FirstOrDefault();
+                if (prop == null)
+                    return null;
+                var value = prop.GetValue(this, null);
+                if (value == null)
+                    return null;
+                return (IReadOnlyCollection<T>)((IReadOnlyCollection<ICalendarioDTO>)value).OfType<T>().ToList();
+            });
+        }
 
+        public async Task<T> GetById<T>(string id) where T : IHaveId
+        {
+            return await this.GetByIdFromCollection<T>(id);
         }
     }
 }

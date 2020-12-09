@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.Calendario.DTO
 {
-    public sealed class CalendarType : Interfaces.ICalendarioDTO
+    public sealed class CalendarType : Interfaces.ICalendarioDTO, Interfaces.IHaveId
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -15,7 +15,7 @@ namespace StudyWPF.UnitTests.Calendario.DTO
     {
         public static TestRepository data = new TestRepository();
         [TestMethod]
-        public async Task SerilizeEvents_Success ()
+        public async Task SerilizeandDeserializeEvents_Success ()
         {
             var json = await data.GetJsonEntities<Event>();
             var objects = Deserialization.DeserializeObject<Event[]>(json, data);

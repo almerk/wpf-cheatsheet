@@ -19,17 +19,21 @@ namespace StudyWPF.Calendario.DTO.DevelopOnly
             .Full()
             .Build();
 
-        public IReadOnlyCollection<T> Get<T>() where T : ICalendarioDTO
+        public async Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
         {
-            return _context.Get<T>();
+            return await _context.Get<T>();
+        }
+
+        public async Task<T> GetById<T>(string id) where T : IHaveId
+        {
+            return await _context.GetById<T>(id);
         }
 
         public async Task<string> GetJsonEntities<T>() where T : Interfaces.ICalendarioDTO
         {
-            return await Task.Run(() => 
-            {
-                return this.Get<T>().Cast<ICalendarioDTO>().SerializeJson();
-            });
+          
+            return (await this.Get<T>()).Cast<ICalendarioDTO>().SerializeJson();
+         
         }
         
     }

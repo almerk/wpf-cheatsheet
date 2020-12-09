@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace StudyWPF.Calendario.DTO
 {
-    public sealed class Calendar: Interfaces.ICalendarioDTO
+    public sealed class Calendar: Interfaces.ICalendarioDTO, Interfaces.IHaveId
     {
         public string Id { get; set; }
         public string CalendarType { get; set; }

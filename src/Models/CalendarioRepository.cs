@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using StudyWPF.Calendario.DTO.Client;
 using StudyWPF.Calendario.DTO.Interfaces;
+using StudyWPF.Calendario.DTO.Utils;
 
 namespace StudyWPF.Models
 {
@@ -32,15 +33,23 @@ namespace StudyWPF.Models
         {
             var result = new CalendarioRepository(server);
             var contextBuilderService = new ContextBuilderService(result._proxy);
-            contextBuilderService.Build(result.DTOContext);
+            await contextBuilderService.Build(result.DTOContext);
             return result;
         }
 
-        public IReadOnlyCollection<T> Get<T>() where T : ICalendarioDTO
+        public async Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
         {
-            var json = _server.GetJsonEnities<T>().GetAwaiter().GetResult(); //TODO: This smells bad, rewrite
+            var json = await _server.GetJsonEnities<T>();
             return Calendario.DTO.Utils.Deserialization.DeserializeObject<List<T>>(json, _proxy);
         }
+
+        public async Task<T> GetById<T>(string id) where T : IHaveId
+        {
+            var entity = await DTOContext.GetById<T>(id);
+            if (entity == null) throw new ArgumentException($"Could not find entity of type{typeof(T).Name} with id {id} in state storage");
+            return entity;
+        }
+
         private class ProxyDecorator : IClientRepository
         {
             private CalendarioRepository _repository;
@@ -50,10 +59,15 @@ namespace StudyWPF.Models
                 _repository = repository;
             }
 
-            public IReadOnlyCollection<T> Get<T>() where T : ICalendarioDTO
+            public async Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
             {
-               var entities = _repository.DTOContext.Get<T>();
-               return entities ?? _repository.Get<T>();
+                var entities = await _repository.DTOContext.Get<T>();
+                return entities ?? await _repository.Get<T>();
+            }
+
+            public async Task<T> GetById<T>(string id) where T : IHaveId
+            {
+                return await this.GetByIdFromCollection<T>(id);
             }
         }
     }

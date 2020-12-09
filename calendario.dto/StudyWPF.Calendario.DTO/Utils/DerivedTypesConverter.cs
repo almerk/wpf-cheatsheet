@@ -99,10 +99,12 @@ namespace StudyWPF.Calendario.DTO.Utils
                 var type = Type.GetType(typeName, true);
                 if (_repository != null) 
                 {
-                    MethodInfo mi = _repository.GetType().GetMethod("Get");
+                    MethodInfo mi = _repository.GetType().GetMethod("GetById");
                     MethodInfo miConstructed = mi.MakeGenericMethod(type);
-                    var elements = miConstructed.Invoke(_repository, new object[] { });
-                    var refferedElement = (elements as IEnumerable<IInheritable>).FirstOrDefault(x => x.TypeUniqueId == uniqueIdString);
+                    var task = (Task)miConstructed.Invoke(_repository, new object[] { uniqueIdString });
+                    task.ConfigureAwait(false);
+                    var resultProperty = task.GetType().GetProperty("Result");
+                    var refferedElement = resultProperty.GetValue(task);
                     if (refferedElement == null)
                         throw new DeserializationException(type, uniqueIdString, $"Could not find object of type {type} and id {uniqueIdString} in deserialization proxy repository");
                     return refferedElement;

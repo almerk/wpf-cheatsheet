@@ -12,11 +12,12 @@ namespace StudyWPF.Calendario.DTO.Interfaces
     public interface IClientRepository
     {
         /// <summary>
-        /// All enities of type get method MUST BE only sync (caused by DI)
+        /// Get DTO entities of specified type
         /// </summary>
         /// <typeparam name="T">ICalendarioDTO entity</typeparam>
         /// <returns></returns>
-        IReadOnlyCollection<T> Get<T>() where T : ICalendarioDTO;
+        Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO;
+        Task<T> GetById<T>(string id) where T : IHaveId;
 
     }
 }
