@@ -63,6 +63,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\Application.cs" />
+    <Compile Include="ViewModels\Calendario\Calendar.cs" />
+    <Compile Include="ViewModels\Calendario\CalendarType.cs" />
+    <Compile Include="ViewModels\Calendario\Comment.cs" />
+    <Compile Include="ViewModels\Calendario\Date.cs" />
+    <Compile Include="ViewModels\Calendario\Dates\ContinuousDate.cs" />
+    <Compile Include="ViewModels\Calendario\Dates\ContinuousReccurenceDate.cs" />
+    <Compile Include="ViewModels\Calendario\Dates\ReccurenceDate.cs" />
+    <Compile Include="ViewModels\Calendario\Dates\SimpleDate.cs" />
+    <Compile Include="ViewModels\Calendario\Enums.cs" />
+    <Compile Include="ViewModels\Calendario\Event.cs" />
+    <Compile Include="ViewModels\Calendario\Occurence.cs" />
+    <Compile Include="ViewModels\Calendario\OccurenceDate.cs" />
+    <Compile Include="ViewModels\Calendario\ReadRecord.cs" />
+    <Compile Include="ViewModels\Calendario\Subjects\Group.cs" />
+    <Compile Include="ViewModels\Calendario\Subjects\User.cs" />
+    <Compile Include="ViewModels\Calendario\Subject.cs" />
+    <Compile Include="ViewModels\Utils\NotifyPropertyChanged.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,7 +150,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\Calendario\" />
+    <Folder Include="ViewModels\Calendario\Relations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
