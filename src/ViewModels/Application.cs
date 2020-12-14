@@ -9,11 +9,11 @@ namespace StudyWPF.ViewModels
 {
     public class Application: Utils.NotifyPropertyChanged
     {
-        private CalendarioContext _context;
+        //private CalendarioContext _context;
 
-        public Application(Models.CalendarioContext context) 
+        public Application(/*Models.CalendarioContext context*/) 
         {
-            this._context = context;
+            //this._context = context;
         }
     }
 }

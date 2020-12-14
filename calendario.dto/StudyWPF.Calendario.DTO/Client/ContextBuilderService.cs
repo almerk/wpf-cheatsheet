@@ -11,8 +11,7 @@ namespace StudyWPF.Calendario.DTO.Client
         private readonly Interfaces.IClientRepository _repository;
         public ContextBuilderService(Interfaces.IClientRepository repository) 
         {
-            if (repository == null) throw new ArgumentNullException("repository");
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException("repository");
         }
 
         /// <summary>
