@@ -14,6 +14,7 @@ namespace StudyWPF.ViewModels
     {
         private bool hasErrors;
         private WindowLoadedCommand windowLoaded;
+        public bool CanHandleExceptions { get; set; } = false;
         public string Name => "Informer";
         public bool HasErrors { get => hasErrors; private set { hasErrors = value; OnPropertyChanged(); } }
         public ObservableCollection<Error> Errors { get; }
@@ -23,12 +24,16 @@ namespace StudyWPF.ViewModels
             Errors.CollectionChanged += (s, e) => { HasErrors = Errors.Any(); };
         }
 
+        internal void HandleException(Exception ex)
+        {
+            Errors.Add(new Error() { Message = ex.Message });
+        }
+
         public WindowLoadedCommand WindowLoaded => LazyInitializer.EnsureInitialized(ref windowLoaded, () =>  
         new WindowLoadedCommand(async () => 
         {
-            await Task.Delay(1000);
-            Errors.Add(new Error() { Message = "Test error" });
-            Errors.Add(new Error() { Message = "Another test error" });
+            CanHandleExceptions = true;
+            throw new Exception("Test exception after loading");
         }));
     }
 }

@@ -24,6 +24,13 @@ namespace StudyWPF
     {
         public ViewModels.Application ViewModel { get; }
 
+        public bool CanHandleExceptions { get { return ViewModel?.CanHandleExceptions ?? false; } }
+
+        public void HandleExcepion(Exception ex) 
+        {
+            ViewModel.HandleException(ex);
+        }
+
         public MainWindow(ViewModels.Application application)
         {
             this.ViewModel = application;
