@@ -90,6 +90,8 @@
     <Compile Include="ViewModels\Calendario\Subjects\Group.cs" />
     <Compile Include="ViewModels\Calendario\Subjects\User.cs" />
     <Compile Include="ViewModels\Calendario\Subject.cs" />
+    <Compile Include="ViewModels\Commands\WindowLoadedCommand.cs" />
+    <Compile Include="ViewModels\Error.cs" />
     <Compile Include="ViewModels\Utils\NotifyPropertyChanged.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +164,7 @@
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="ViewModels\Calendario\Relations\" />
+    <Folder Include="ViewModels\Utils\Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

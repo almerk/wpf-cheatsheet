@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:StudyWPF"
         mc:Ignorable="d"
         Height="450" Width="800"
@@ -13,7 +14,41 @@
     <mah:MetroWindow.Resources>
         <ResourceDictionary Source="/Resources/MainWindowDictionary.xaml"/>
     </mah:MetroWindow.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding ViewModel.WindowLoaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
-        
+        <Label>Some text</Label>
+        <Grid x:Name="ErrorPanel"
+              Visibility="{Binding ViewModel.HasErrors, Converter={StaticResource bool2VisibilityConverter}}"
+              Panel.ZIndex="3" 
+              Background="#dd000000" 
+              VerticalAlignment="Stretch" 
+              HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="1" 
+                   Background="{StaticResource ContextMenuBackgroundBrush}"
+                   Padding="10"
+                   FontSize="20"
+                   BorderThickness="1"
+                   BorderBrush="{StaticResource ControlsValidationBrush}">
+                <Label.Content>
+                    <ListBox ItemsSource="{Binding ViewModel.Errors}" IsEnabled="False" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Message}" 
+                                           Foreground="{StaticResource TextBrush}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Label.Content>
+            </Label>
+        </Grid>
     </Grid>
 </mah:MetroWindow>
