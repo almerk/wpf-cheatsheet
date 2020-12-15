@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudyWPF.ViewModels;
 
 namespace StudyWPF
 {
@@ -21,8 +22,11 @@ namespace StudyWPF
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public MainWindow()
+        public ViewModels.Application ViewModel { get; }
+
+        public MainWindow(ViewModels.Application application)
         {
+            this.ViewModel = application;
             InitializeComponent();
         }
     }

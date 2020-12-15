@@ -6,30 +6,14 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:StudyWPF"
         mc:Ignorable="d"
-        Title="Informer" Height="450" Width="800"
-        SaveWindowPosition="True">
+        Height="450" Width="800"
+        SaveWindowPosition="True"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="{Binding ViewModel.Name}">
     <mah:MetroWindow.Resources>
         <ResourceDictionary Source="/Resources/MainWindowDictionary.xaml"/>
     </mah:MetroWindow.Resources>
     <Grid>
-        <TabControl>
-            <TabItem>
-                <TabItem.Header>
-                   Calendario
-                </TabItem.Header>
-                <TabItem.Content>
-                    <TabControl TabStripPlacement="Left" FontSize="14">
-                        <TabItem Header="Common">common</TabItem>
-                        <TabItem Header="Today">today</TabItem>
-                    </TabControl>
-                </TabItem.Content>
-            </TabItem>
-            <TabItem>
-                <TabItem.Header>Another</TabItem.Header>
-                <TabItem.Content>
-                    lorem ipsum
-                </TabItem.Content>
-            </TabItem>
-        </TabControl>
+        
     </Grid>
 </mah:MetroWindow>

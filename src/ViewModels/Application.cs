@@ -9,9 +9,10 @@ namespace StudyWPF.ViewModels
 {
     public class Application: Utils.NotifyPropertyChanged
     {
+        public string Name => "Informer";
         //private CalendarioContext _context;
 
-        public Application(/*Models.CalendarioContext context*/) 
+        public Application(/*Models.CalendarioContext context*/)
         {
             //this._context = context;
         }

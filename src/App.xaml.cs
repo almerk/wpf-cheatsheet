@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -18,9 +19,17 @@ namespace StudyWPF
         [System.Diagnostics.DebuggerNonUserCode]
         public static void Main()
         {
+            IKernel container = new StandardKernel();//Container of dependencies
+            ConfigureContainer(container);
+            
             var application = new App();
-            application.InitializeComponent();
-            application.Run();
+            var mainWindow = container.Get<MainWindow>();
+            application.Run(mainWindow);
+        }
+
+        private static void ConfigureContainer(IKernel kernel) 
+        { 
+
         }
     }
 }
