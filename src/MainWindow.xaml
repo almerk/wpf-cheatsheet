@@ -20,7 +20,49 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <Label>Some text</Label>
+        <Grid x:Name="ContentPanel" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ToolBarPanel Orientation="Vertical" VerticalAlignment="Stretch" Background="{StaticResource FlyoutBackgroundBrush}">
+                <ToolBar Band="1" BandIndex="1">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Target="{Binding ElementName=StartDateInput}">From</Label>
+                        <DatePicker x:Name="StartDateInput"
+                                    Grid.Column="1" Grid.Row="0"
+                                    SelectedDate="{Binding ViewModel.ToolBar.Dates.Finish}"/>
+                        <Label Grid.Column="0" Grid.Row="1" Target="{Binding ElementName=FinishDateInput}">Till</Label>
+                        <DatePicker x:Name="FinishDateInput" 
+                                    Grid.Column="1" Grid.Row="1"
+                                    SelectedDate="{Binding ViewModel.ToolBar.Dates.Finish}"/>
+                    </Grid>
+                </ToolBar>
+                <ToolBar Band="2" BandIndex="2">
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton 
+                            IsChecked="{Binding ViewModel.ToolBar.DisplayOnlyTasks}">
+                            <Rectangle Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"/>
+                            </Rectangle.OpacityMask>
+                            </Rectangle> 
+                            
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ViewModel.ToolBar.DisplayTasksUserNotResponsibleFor}" >Not related to me tasks</ToggleButton>
+                        <ToggleButton IsChecked="{Binding ViewModel.ToolBar.DisplayArchiveEvents}">Archived events</ToggleButton>
+                    </StackPanel>
+                </ToolBar>
+            </ToolBarPanel>
+        </Grid>
         <Grid x:Name="ErrorPanel"
               Visibility="{Binding ViewModel.HasErrors, Converter={StaticResource bool2VisibilityConverter}}"
               Panel.ZIndex="3" 

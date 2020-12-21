@@ -1,4 +1,4 @@
-﻿using StudyWPF.Models;
+﻿using Ninject;
 using StudyWPF.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
@@ -17,10 +17,13 @@ namespace StudyWPF.ViewModels
         public bool CanHandleExceptions { get; set; } = false;
         public string Name => "Informer";
         public bool HasErrors { get => hasErrors; private set { hasErrors = value; OnPropertyChanged(); } }
-        public ObservableCollection<Error> Errors { get; }
+        public ObservableCollection<Error> Errors { get; } = new ObservableCollection<Error>();
+        
+        [Inject]
+        public ToolBar ToolBar { get; set; }
+        
         public Application()
         {
-            Errors = new ObservableCollection<Error>();//TODO: DI errors
             Errors.CollectionChanged += (s, e) => { HasErrors = Errors.Any(); };
         }
 
@@ -33,7 +36,6 @@ namespace StudyWPF.ViewModels
         new WindowLoadedCommand(async () => 
         {
             CanHandleExceptions = true;
-            throw new Exception("Test exception after loading");
         }));
     }
 }

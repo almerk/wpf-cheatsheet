@@ -92,6 +92,8 @@
     <Compile Include="ViewModels\Calendario\Subject.cs" />
     <Compile Include="ViewModels\Commands\WindowLoadedCommand.cs" />
     <Compile Include="ViewModels\Error.cs" />
+    <Compile Include="ViewModels\ToolBar.cs" />
+    <Compile Include="ViewModels\ToolBarModels\Dates.cs" />
     <Compile Include="ViewModels\Utils\NotifyPropertyChanged.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

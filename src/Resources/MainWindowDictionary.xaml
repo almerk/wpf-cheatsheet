@@ -10,6 +10,13 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="ToolBar" BasedOn="{StaticResource {x:Type ItemsControl}}">
+        <Setter Property="Padding" Value="2 8 2 8"/>
+        <Setter Property="ToolBarTray.IsLocked" Value="True"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=Control}}"/>
+    </Style>
     <!--<Style TargetType="mah:Badged" BasedOn="{StaticResource {x:Type mah:Badged}}">
         <Setter Property="Panel.ZIndex" Value="1000" />
     </Style>-->
@@ -17,4 +24,5 @@
     <SolidColorBrush x:Key="LateColor" Color="Red"/>
     <SolidColorBrush x:Key="CompleteColor" Color="Green"/>
     <SolidColorBrush x:Key="ArchiveColor" Color="#444444"/>
+    
 </ResourceDictionary>
