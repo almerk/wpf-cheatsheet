@@ -8,7 +8,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:StudyWPF"
         mc:Ignorable="d"
-        Height="450" Width="800"
+        Height="Auto" Width="Auto"
         SaveWindowPosition="True"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="{Binding ViewModel.Name}">
@@ -75,6 +75,21 @@
                     </Grid>
                 </ToolBar>
             </ToolBarPanel>
+        </Grid>
+        <Grid x:Name="ContentLoadingPanel"  
+              Visibility="{Binding ViewModel.Content.IsLoading, Converter={StaticResource StringToOppositeVisibilityConverter}}"
+              Panel.ZIndex="2" 
+              Background="{StaticResource ControlBackgroundBrush}"
+              VerticalAlignment="Stretch" 
+              HorizontalAlignment="Stretch">
+            <fa:ImageAwesome Spin="true" 
+                             Icon="Spinner" 
+                             VerticalAlignment="Center" 
+                             HorizontalAlignment="Center"
+                             SpinDuration="1.4"
+                             Foreground="{StaticResource AccentBaseColorBrush}"
+                             Width="40"
+                             Height="40"/>
         </Grid>
         <Grid x:Name="ErrorPanel"
               Visibility="{Binding ViewModel.HasErrors, Converter={StaticResource bool2VisibilityConverter}}"

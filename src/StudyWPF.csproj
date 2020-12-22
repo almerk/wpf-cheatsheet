@@ -76,6 +76,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Services\ContentService.cs" />
+    <Compile Include="Services\DomainEventService.cs" />
     <Compile Include="ViewModels\Application.cs" />
     <Compile Include="ViewModels\Calendario\Calendar.cs" />
     <Compile Include="ViewModels\Calendario\CalendarType.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="ViewModels\Calendario\Subjects\User.cs" />
     <Compile Include="ViewModels\Calendario\Subject.cs" />
     <Compile Include="ViewModels\Commands\WindowLoadedCommand.cs" />
+    <Compile Include="ViewModels\Content.cs" />
     <Compile Include="ViewModels\Error.cs" />
     <Compile Include="ViewModels\ToolBar.cs" />
     <Compile Include="ViewModels\ToolBarModels\Dates.cs" />
@@ -152,7 +155,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
     <Folder Include="ViewModels\Calendario\Relations\" />
     <Folder Include="ViewModels\Utils\Converters\" />
   </ItemGroup>

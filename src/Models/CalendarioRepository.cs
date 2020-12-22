@@ -12,35 +12,48 @@ namespace StudyWPF.Models
 {
     public class CalendarioRepository : IClientRepository
     {
-        private CalendarioRepository(CalendarioServer server) 
+        public CalendarioRepository(CalendarioServer server) 
         {
             this._server = server;
             this._proxy = new ProxyDecorator(this);
         }
-        private Context DTOContext { get; } = new Context();
+        public bool IsInitialized => DTOContext != null;
+
+        private Context DTOContext { get; set; }
         private CalendarioContext _context;
         private CalendarioServer _server;
         private ProxyDecorator _proxy;
 
-        public CalendarioContext Context
+        private object contextLock = new object();
+        public async Task<CalendarioContext> GetContext() //TODO: Rewrite to AsyncLazy
         {
-            get
+            if (_context != null) return _context;
+            if (!IsInitialized) await Initialize();
+            lock(contextLock)
             {
-                return LazyInitializer.EnsureInitialized(ref _context, () => new CalendarioContext(DTOContext));
+                return _context ?? (_context = new CalendarioContext(DTOContext));
             }
         }
-        public static async Task<CalendarioRepository> Create(CalendarioServer server) 
+            
+        
+        public static async Task<CalendarioRepository> CreateAndInitialize(CalendarioServer server)
         {
             var result = new CalendarioRepository(server);
-            var contextBuilderService = new ContextBuilderService(result._proxy);
-            await contextBuilderService.Build(result.DTOContext);
+            await result.Initialize();
             return result;
+        }
+
+        public async Task Initialize()
+        {
+            var contextBuilderService = new ContextBuilderService(_proxy);
+            DTOContext = new Context();
+            await contextBuilderService.Build(DTOContext);
         }
 
         public async Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
         {
             var json = await _server.GetJsonEnities<T>();
-            return Calendario.DTO.Utils.Deserialization.DeserializeObject<List<T>>(json, _proxy);
+            return Deserialization.DeserializeObject<List<T>>(json, _proxy);
         }
 
         public async Task<T> GetById<T>(string id) where T : IHaveId

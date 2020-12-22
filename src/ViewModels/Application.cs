@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using StudyWPF.Models;
 using StudyWPF.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,18 @@ namespace StudyWPF.ViewModels
     {
         private bool hasErrors;
         private WindowLoadedCommand windowLoaded;
+        private CalendarioRepository _repository;
+
         public bool CanHandleExceptions { get; set; } = false;
-        public string Name => "Informer";
+        public string Name => "📅 Informer";
         public bool HasErrors { get => hasErrors; private set { hasErrors = value; OnPropertyChanged(); } }
         public ObservableCollection<Error> Errors { get; } = new ObservableCollection<Error>();
         
         [Inject]
         public ToolBar ToolBar { get; set; }
+        
+        [Inject]
+        public Content Content { get; set; }
         
         public Application()
         {
@@ -36,6 +42,7 @@ namespace StudyWPF.ViewModels
         new WindowLoadedCommand(async () => 
         {
             CanHandleExceptions = true;
+            await Content.Load();
         }));
     }
 }

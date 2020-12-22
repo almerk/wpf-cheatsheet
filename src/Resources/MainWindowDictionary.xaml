@@ -33,7 +33,7 @@
 
     <Style TargetType="ToggleButton" x:Key="ComplexToggleButtonStyle">
         <Setter Property="FontSize" Value="30"/>
-        
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -45,7 +45,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Foreground" Value="{StaticResource AccentBaseColorBrush}"/>
-    
+
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource DarkIdealForegroundDisabledBrush}"/>
@@ -83,6 +83,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    
 </ResourceDictionary>

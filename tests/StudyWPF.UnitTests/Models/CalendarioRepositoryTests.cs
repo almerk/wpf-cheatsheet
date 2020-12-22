@@ -14,8 +14,8 @@ namespace StudyWPF.UnitTests.Models
         [TestMethod]
         public async Task ContextCreate_Success()
         {
-            var repo = await CalendarioRepository.Create(new CalendarioServer());
-            Assert.IsNotNull(repo.Context);
+            var repo = await CalendarioRepository.CreateAndInitialize(new CalendarioServer());
+            Assert.IsNotNull(repo.GetContext());
         }
     }
 }
