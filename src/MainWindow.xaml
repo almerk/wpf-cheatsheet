@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:StudyWPF"
         mc:Ignorable="d"
         Height="450" Width="800"
@@ -47,19 +48,31 @@
                     </Grid>
                 </ToolBar>
                 <ToolBar Band="2" BandIndex="2">
-                    <StackPanel Orientation="Horizontal">
-                        <ToggleButton 
-                            IsChecked="{Binding ViewModel.ToolBar.DisplayOnlyTasks}">
-                            <Rectangle Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}">
-                            <Rectangle.OpacityMask>
-                                <VisualBrush Stretch="Fill"/>
-                            </Rectangle.OpacityMask>
-                            </Rectangle> 
-                            
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <ToggleButton ToolTip="Display only tasks"
+                            IsChecked="{Binding ViewModel.ToolBar.DisplayOnlyTasks}"
+                            Style="{StaticResource ComplexToggleButtonStyle}"
+                            Grid.Column="0">
+                            <fa:FontAwesome Icon="Tasks"/>
                         </ToggleButton>
-                        <ToggleButton IsChecked="{Binding ViewModel.ToolBar.DisplayTasksUserNotResponsibleFor}" >Not related to me tasks</ToggleButton>
-                        <ToggleButton IsChecked="{Binding ViewModel.ToolBar.DisplayArchiveEvents}">Archived events</ToggleButton>
-                    </StackPanel>
+                        <ToggleButton ToolTip="Show not directly related tasks" 
+                            IsChecked="{Binding ViewModel.ToolBar.DisplayTasksUserNotResponsibleFor}"
+                            Style="{StaticResource ComplexToggleButtonStyle}"
+                            Grid.Column="1">
+                            <fa:FontAwesome Icon="Users"/>
+                        </ToggleButton>
+                        <ToggleButton ToolTip="Show archive events" 
+                            IsChecked="{Binding ViewModel.ToolBar.DisplayArchiveEvents}"
+                            Style="{StaticResource ComplexToggleButtonStyle}"
+                            Grid.Column="2">
+                            <fa:FontAwesome Icon="Archive" />
+                        </ToggleButton>
+                    </Grid>
                 </ToolBar>
             </ToolBarPanel>
         </Grid>
