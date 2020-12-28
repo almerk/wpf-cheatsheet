@@ -8,12 +8,14 @@ namespace StudyWPF.ViewModels.Calendario.Subjects
 {
     public class User : Subject
     {
-        private Group group;
+        public User(StudyWPF.Calendario.DTO.Subjects.User user) : base(user) { }
+
         private string appeal;
         private string shortName;
 
-        public Group Group { get => group; set { group = value; OnPropertyChanged();  } }
         public string Appeal { get => appeal; set { appeal = value; OnPropertyChanged(); } }
         public string ShortName { get => shortName; set { shortName = value; OnPropertyChanged(); } }
+
+        public override string Label => ShortName;
     }
 }

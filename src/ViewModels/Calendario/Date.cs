@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario
 {
-    public abstract class Date: Utils.NotifyPropertyChangedObject
+    public abstract class Date : Utils.GenericDTOViewModelDecorator<StudyWPF.Calendario.DTO.Date>
     {
-        public string Id { get; protected set; }
+        protected Date(StudyWPF.Calendario.DTO.Date value) : base(value)
+        {
+        }
     }
 }

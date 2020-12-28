@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario.Dates
 {
-    public sealed class SimpleDate: Date
+    public sealed class SimpleDate : Utils.GenericDTOViewModelDecorator<StudyWPF.Calendario.DTO.Dates.SimpleDate>
     {
-        public DateTime Value { get; set; }
-        public bool HasTime { get; set; }
+        public SimpleDate(StudyWPF.Calendario.DTO.Dates.SimpleDate value) : base(value)
+        {
+        }
     }
 }

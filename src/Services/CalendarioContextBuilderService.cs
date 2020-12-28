@@ -15,7 +15,7 @@ namespace StudyWPF.Services
     {
         private ContextBuilderService _contextBuildService;
         private CalendarioServer _server;
-
+        
         public CalendarioContextBuilderService(ContextBuilderService contextBuilderService, CalendarioServer server) 
         {
             this._contextBuildService = contextBuilderService ?? throw new ArgumentNullException("contextBuildService");

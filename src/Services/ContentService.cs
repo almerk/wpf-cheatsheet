@@ -9,8 +9,6 @@ namespace StudyWPF.Services
 {
     public class ContentService
     {
-
-
         public async Task<IEnumerable<ViewModels.Calendario.CalendarType>> GetUserCalendarTypes(CalendarioViewContext context)
         {
             //var calendarTypesDTO = 

@@ -10,12 +10,12 @@ namespace StudyWPF.ViewModels.Calendario.Subjects
 {
     public class Group : Subject
     {
-        private string name;
-        private Group parentGroup;
+        public Group(StudyWPF.Calendario.DTO.Subjects.Group group) : base(group) 
+        {
+            this.GroupValue = group;
+        }
+        public StudyWPF.Calendario.DTO.Subjects.Group GroupValue { get; }
 
-        public string Name { get => name; set { name = value; OnPropertyChanged(); } }
-        public Group ParentGroup { get => parentGroup; set { parentGroup = value; OnPropertyChanged(); } }
-        public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();
-        public ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
+        public override string Label => GroupValue.Name;
     }
 }

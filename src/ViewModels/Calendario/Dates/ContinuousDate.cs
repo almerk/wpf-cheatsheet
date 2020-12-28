@@ -8,8 +8,8 @@ namespace StudyWPF.ViewModels.Calendario.Dates
 {
     public class ContinuousDate:Date
     {
-        public bool HasTime { get; private set; }
-        public DateTime Start { get; private set; }
-        public DateTime End { get; private set; }
+        public ContinuousDate(StudyWPF.Calendario.DTO.Dates.SimpleDate value) : base(value)
+        {
+        }
     }
 }

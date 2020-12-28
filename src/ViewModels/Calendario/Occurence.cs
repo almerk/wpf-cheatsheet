@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario
 {
-    public class Occurence
+    public class Occurence : Utils.GenericDTOViewModelDecorator<StudyWPF.Calendario.DTO.Occurence>
     {
-        public Event Event { get; private set; }
-        public OccurenceDate Date { get; private set; }
-        public EventStatus Status { get; private set; }
+        public Occurence(StudyWPF.Calendario.DTO.Occurence value) : base(value)
+        {
+        }
     }
 }

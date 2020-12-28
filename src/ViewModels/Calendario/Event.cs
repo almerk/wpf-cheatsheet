@@ -7,17 +7,10 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario
 {
-    public class Event : Utils.NotifyPropertyChangedObject
+    public class Event : Utils.GenericDTOViewModelDecorator<StudyWPF.Calendario.DTO.Event>
     {
-        private string name;
-        private string description = string.Empty;
-
-        public string Id { get; private set; }
-        public Calendar Calendar { get; private set; }
-        public string Name { get => name; set { name = value; OnPropertyChanged(); } }
-        public ObservableCollection<Date> Dates { get; set; } = new ObservableCollection<Date>();
-        public string Description { get => description; set { description = value; OnPropertyChanged(); } }
-        public ObservableCollection<Subject> Related { get; set; } = new ObservableCollection<Subject>();
-        public ObservableCollection<Comment> Comments { get; set; } = new ObservableCollection<Comment>();
+        public Event(StudyWPF.Calendario.DTO.Event value) : base(value)
+        {
+        }
     }
 }

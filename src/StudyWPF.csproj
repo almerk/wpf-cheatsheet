@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\CalendarioContextBuilderService.cs" />
+    <Compile Include="ViewModels\Utils\GenericDTOViewModelDecorator.cs" />
     <Compile Include="ViewModels\Utils\NotifyPropertyChangedObject.cs" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -93,7 +94,6 @@
     <Compile Include="ViewModels\Calendario\Enums.cs" />
     <Compile Include="ViewModels\Calendario\Event.cs" />
     <Compile Include="ViewModels\Calendario\Occurence.cs" />
-    <Compile Include="ViewModels\Calendario\OccurenceDate.cs" />
     <Compile Include="ViewModels\Calendario\ReadRecord.cs" />
     <Compile Include="ViewModels\Calendario\Subjects\Group.cs" />
     <Compile Include="ViewModels\Calendario\Subjects\User.cs" />

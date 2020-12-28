@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario
 {
-    public class Comment : Utils.NotifyPropertyChangedObject
+    public class Comment : Utils.GenericDTOViewModelDecorator<StudyWPF.Calendario.DTO.Comment>
     {
-        private string text;
-
-        public string Id { get; private set; }
-        public Event Event { get; private set; }
-        public Subjects.User User { get; private set; }
-        public DateTime DateTime { get; private set; }
-        public string Text { get => text; set { text = value; OnPropertyChanged(); } }
+        public Comment(StudyWPF.Calendario.DTO.Comment value) : base(value)
+        {
+        }
     }
 }

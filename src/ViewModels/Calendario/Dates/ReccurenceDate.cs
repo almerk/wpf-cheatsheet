@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario.Dates
 {
-    public sealed class ReccurenceDate: Date
+    public sealed class ReccurenceDate : Date
     {
-        public  DateTime Start { get; set; }
-        public bool HasTime { get; set; }
-        public IReadOnlyCollection<string> ReccurenceRules { get; set; }
+        public ReccurenceDate(StudyWPF.Calendario.DTO.Dates.ReccurenceDate value) : base(value)
+        {
+        }
     }
+
 }
