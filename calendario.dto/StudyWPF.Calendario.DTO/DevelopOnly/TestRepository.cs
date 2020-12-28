@@ -12,7 +12,7 @@ using StudyWPF.Calendario.DTO.Utils;
 namespace StudyWPF.Calendario.DTO.DevelopOnly
 {
 #if DEBUG
-    public class TestRepository:Interfaces.IClientRepository
+    public class TestRepository:Interfaces.IClientQueryRepository
     {
         
         private Context _context = new TestContextBuilder()

@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StudyWPF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +10,11 @@ namespace StudyWPF.UnitTests.Models
     [TestClass]
     public class CalendarioRepositoryTests
     {
-        [TestMethod]
-        public async Task ContextCreate_Success()
-        {
-            var repo = await CalendarioRepository.CreateAndInitialize(new CalendarioServer());
-            Assert.IsNotNull(repo.GetContext());
-        }
+        //[TestMethod]
+        //public async Task ContextCreate_Success()
+        //{
+        //    var repo = await CalendarioRepository.CreateAndInitialize(new CalendarioServer());
+        //    Assert.IsNotNull(repo.GetContext());
+        //}
     }
 }

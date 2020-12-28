@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels
 {
-    public class ToolBar : Utils.NotifyPropertyChanged
+    public class ToolBar : Utils.NotifyPropertyChangedObject
     {
         private ToolBarModels.Dates dates;
         private bool displayOnlyTasks = false;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels
 {
-    public class Error: Utils.NotifyPropertyChanged
+    public class Error: Utils.NotifyPropertyChangedObject
     {
         public string Message { get; set; }
     }

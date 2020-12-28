@@ -9,7 +9,7 @@ namespace StudyWPF.Calendario.DTO.Interfaces
     /// <summary>
     /// Calendario client repository 
     /// </summary>
-    public interface IClientRepository
+    public interface IClientQueryRepository
     {
         /// <summary>
         /// Get DTO entities of specified type

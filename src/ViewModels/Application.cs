@@ -1,5 +1,4 @@
 ﻿using Ninject;
-using StudyWPF.Models;
 using StudyWPF.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
@@ -11,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels
 {
-    public class Application : Utils.NotifyPropertyChanged
+    public class Application : Utils.NotifyPropertyChangedObject
     {
         private bool hasErrors;
         private WindowLoadedCommand windowLoaded;
-        private CalendarioRepository _repository;
+        private CalendarioViewContext _context;
 
         public bool CanHandleExceptions { get; set; } = false;
         public string Name => "📅 Informer";

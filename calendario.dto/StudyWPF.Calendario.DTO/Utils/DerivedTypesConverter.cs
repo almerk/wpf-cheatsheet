@@ -39,7 +39,7 @@ namespace StudyWPF.Calendario.DTO.Utils
         /// <summary>
         /// Special serializer for derived types
         /// </summary>
-        private JsonSerializer DerivedTypesSerializer(Interfaces.IClientRepository repository = null) => LazyInitializer.EnsureInitialized(ref _derivedTypesSerializer, 
+        private JsonSerializer DerivedTypesSerializer(Interfaces.IClientQueryRepository repository = null) => LazyInitializer.EnsureInitialized(ref _derivedTypesSerializer, 
             () =>
             JsonSerializer.Create(new JsonSerializerSettings()
             {
@@ -76,8 +76,8 @@ namespace StudyWPF.Calendario.DTO.Utils
 
         private class ProxyDeserializeConverter : JsonConverter
         {
-            private IClientRepository _repository;
-            public ProxyDeserializeConverter(IClientRepository repository)
+            private IClientQueryRepository _repository;
+            public ProxyDeserializeConverter(IClientQueryRepository repository)
             {
                 this._repository = repository;
             }

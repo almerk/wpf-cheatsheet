@@ -72,10 +72,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\CalendarioContextBuilderService.cs" />
+    <Compile Include="ViewModels\Utils\NotifyPropertyChangedObject.cs" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ViewModels\CalendarioViewContext.cs" />
     <Compile Include="Services\ContentService.cs" />
     <Compile Include="Services\DomainEventService.cs" />
     <Compile Include="ViewModels\Application.cs" />
@@ -100,7 +103,6 @@
     <Compile Include="ViewModels\Error.cs" />
     <Compile Include="ViewModels\ToolBar.cs" />
     <Compile Include="ViewModels\ToolBarModels\Dates.cs" />
-    <Compile Include="ViewModels\Utils\NotifyPropertyChanged.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,9 +121,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CalendarioContext.cs" />
-    <Compile Include="Models\CalendarioRepository.cs" />
-    <Compile Include="Models\CalendarioServer.cs" />
+    <Compile Include="Services\CalendarioServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

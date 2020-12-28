@@ -9,21 +9,23 @@ using StudyWPF.Calendario.DTO.Utils;
 
 namespace StudyWPF.Calendario.DTO.Client
 {
-    public class Context:Interfaces.IClientRepository
+    public class Context:Interfaces.IClientQueryRepository
     {
+
+        public bool IsBuilt { get; internal set; } = false;
         /// <summary>
         /// Should be created by context builder service or with it's participation
         /// </summary>
         public Context() { }
-        public IReadOnlyCollection<Subjects.Group> Groups { get; internal set; } //aggregates users
-        public IReadOnlyCollection<Subjects.User> Users { get; internal set; }
-        public IReadOnlyCollection<Event> Events { get; internal set; } // aggregates groups, users and dates
-        public IReadOnlyCollection<Comment> Comments { get; internal set; }
-        public IReadOnlyCollection<ReadRecord> ReadRecords { get; internal set; }
-        public IReadOnlyCollection<Calendar> Calendars { get; internal set; } //aggregates groups and users
-        public IReadOnlyCollection<CalendarType> CalendarTypes { get; internal set; }
-        public IReadOnlyCollection<Date> Dates { get; internal set; }
-        public IReadOnlyCollection<Occurence> Occurences { get; internal set; }
+        public virtual IReadOnlyCollection<Subjects.Group> Groups { get; set; } //aggregates users
+        public virtual IReadOnlyCollection<Subjects.User> Users { get; set; }
+        public virtual IReadOnlyCollection<Event> Events { get; set; } // aggregates groups, users and dates
+        public virtual IReadOnlyCollection<Comment> Comments { get; set; }
+        public virtual IReadOnlyCollection<ReadRecord> ReadRecords { get; set; }
+        public virtual IReadOnlyCollection<Calendar> Calendars { get; set; } //aggregates groups and users
+        public virtual IReadOnlyCollection<CalendarType> CalendarTypes { get; set; }
+        public virtual IReadOnlyCollection<Date> Dates { get; set; }
+        public virtual IReadOnlyCollection<Occurence> Occurences { get; set; }
 
         public Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
         {

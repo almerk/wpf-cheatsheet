@@ -7,9 +7,9 @@ using StudyWPF.Calendario.DTO.Client;
 using StudyWPF.Calendario.DTO.Interfaces;
 using StudyWPF.Calendario.DTO.Utils;
 
-namespace StudyWPF.Models
+namespace StudyWPF.Services
 {
-    public class CalendarioServer 
+    public class CalendarioServer
     {
         private static Calendario.DTO.DevelopOnly.TestRepository _repoMock = new Calendario.DTO.DevelopOnly.TestRepository();
         public async Task<string> GetJsonEnities<T>() where T: ICalendarioDTO

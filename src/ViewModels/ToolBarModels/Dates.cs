@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.ToolBarModels
 {
-    public class Dates : Utils.NotifyPropertyChanged
+    public class Dates : Utils.NotifyPropertyChangedObject
     {
         private DateTime? start;
         public DateTime? Start { get => start; set { start = value; OnPropertyChanged(); } }

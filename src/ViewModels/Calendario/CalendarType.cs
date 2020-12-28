@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario
 {
-    public class CalendarType : Utils.NotifyPropertyChanged
+    public class CalendarType : Utils.NotifyPropertyChangedObject
     {
         private string name;
         public string Id { get; private set; }

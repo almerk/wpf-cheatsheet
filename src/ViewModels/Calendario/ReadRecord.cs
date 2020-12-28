@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario
 {
-    public class ReadRecord: Utils.NotifyPropertyChanged
+    public class ReadRecord: Utils.NotifyPropertyChangedObject
     {
         public Occurence Related { get; set; }
         public Subjects.User ByUser { get; set; }

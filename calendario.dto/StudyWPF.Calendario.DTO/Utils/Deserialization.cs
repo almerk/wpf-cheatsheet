@@ -11,7 +11,7 @@ namespace StudyWPF.Calendario.DTO.Utils
 {
     public static class Deserialization
     {
-        public static T DeserializeObject<T>(string jsonString, Interfaces.IClientRepository proxyRepository) 
+        public static T DeserializeObject<T>(string jsonString, Interfaces.IClientQueryRepository proxyRepository) 
         {
 
             return JsonConvert.DeserializeObject<T>(jsonString, new JsonSerializerSettings() 
@@ -22,9 +22,9 @@ namespace StudyWPF.Calendario.DTO.Utils
         }
         internal class ProxyDeserializeContractResolver : DefaultContractResolver
         {
-            public IClientRepository ProxyRepository { get; }
+            public IClientQueryRepository ProxyRepository { get; }
 
-            public ProxyDeserializeContractResolver(IClientRepository proxyRepository)
+            public ProxyDeserializeContractResolver(IClientQueryRepository proxyRepository)
             {
                 this.ProxyRepository = proxyRepository;
             }

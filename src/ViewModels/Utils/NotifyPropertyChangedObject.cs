@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace StudyWPF.ViewModels.Utils
 {
-    public abstract class NotifyPropertyChanged : INotifyPropertyChanged
+    public abstract class NotifyPropertyChangedObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

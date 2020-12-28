@@ -59,7 +59,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Interfaces\ICalendarioDTO.cs" />
-    <Compile Include="Interfaces\IClientRepository.cs" />
+    <Compile Include="Interfaces\IClientQueryRepository.cs" />
     <Compile Include="Interfaces\IHaveId.cs" />
     <Compile Include="Interfaces\IInheritable.cs" />
     <Compile Include="Occurence.cs" />

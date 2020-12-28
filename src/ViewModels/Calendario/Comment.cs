@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyWPF.ViewModels.Calendario
 {
-    public class Comment : Utils.NotifyPropertyChanged
+    public class Comment : Utils.NotifyPropertyChangedObject
     {
         private string text;
 
