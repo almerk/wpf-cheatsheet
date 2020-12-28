@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace StudyWPF.Services
 {
@@ -22,9 +23,9 @@ namespace StudyWPF.Services
         }
         public async Task Build(CalendarioViewContext context) 
         {
+            _ = context ?? throw new ArgumentNullException();
             var proxy = new ProxyContext(context, _server);
             await _contextBuildService.Build(context, proxy);
-            _ = context ?? throw new ArgumentNullException();
         }
 
         private class ProxyContext : IClientQueryRepository
@@ -41,17 +42,17 @@ namespace StudyWPF.Services
             public async Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
             {
                 var entities = await _context.Get<T>();
-                if (entities == null) 
+                if (entities != null)
                 {
-                    var json = await _server.GetJsonEnities<T>();
-                    entities = Deserialization.DeserializeObject<List<T>>(json, this);
+                    return entities;
                 }
-                return entities;
+                var json = await _server.GetJsonEnities<T>();
+                return Deserialization.DeserializeObject<List<T>>(json, this);
             }
 
             public async Task<T> GetById<T>(string id) where T : IHaveId
             {
-                return await _context.GetById<T>(id);
+               return await _context.GetById<T>(id);
             }
         }
 

@@ -14,21 +14,22 @@ namespace StudyWPF.ViewModels
   
         private ContentService _service;
         private CalendarioViewContext _context;
-        private bool isLoading=true;
+        private CalendarioContextBuilderService _contextBuilderService;
+        private bool isLoading = true;
 
         public bool IsLoading { get => isLoading; private set { isLoading = value; OnPropertyChanged(); } }
         public ObservableCollection<Calendario.Subjects.Group> AllGroups { get; private set; }
-        public ObservableCollection<CalendarType> CalendarTypes { get; private set; }
 
-        public Content(ContentService service, CalendarioViewContext context)
+        public Content(ContentService service, CalendarioViewContext context, CalendarioContextBuilderService contextBuilderService)
         {
             _service = service;
             _context = context;
+            _contextBuilderService = contextBuilderService;
         }
         public async Task Load()
         {
-            AllGroups = new ObservableCollection<Calendario.Subjects.Group>(await _service.GetGroupTree(_context));
-            CalendarTypes = new ObservableCollection<Calendario.CalendarType>(await _service.GetUserCalendarTypes(_context));
+            await _contextBuilderService.Build(_context);
+            IsLoading = false;
         }
 
     }

@@ -13,8 +13,8 @@ namespace StudyWPF.Calendario.DTO.Client
         /// </summary>
         public async Task Build(Context context, Interfaces.IClientQueryRepository repository)
         {
-            repository = repository ?? throw new ArgumentNullException("repository");
-            if (context == null) throw new ArgumentNullException("context");
+            _ = context ?? throw new ArgumentNullException("context");
+            _ = repository ?? throw new ArgumentNullException("repository");
             context.Users = await repository.Get<Subjects.User>();
             context.Groups = await repository.Get<Subjects.Group>();
             context.Dates = await repository.Get<Date>();

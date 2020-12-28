@@ -11,7 +11,7 @@ namespace StudyWPF.ViewModels
 {
     public class CalendarioViewContext: StudyWPF.Calendario.DTO.Client.Context, INotifyPropertyChanged
     {
-        public override IReadOnlyCollection<CalendarType> CalendarTypes { get => base.CalendarTypes; set => base.CalendarTypes = value; }
+        //public override IReadOnlyCollection<CalendarType> CalendarTypes { get => base.CalendarTypes; set => base.CalendarTypes = value; }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

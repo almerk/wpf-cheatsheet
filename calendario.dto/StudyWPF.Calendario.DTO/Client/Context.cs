@@ -29,20 +29,19 @@ namespace StudyWPF.Calendario.DTO.Client
 
         public Task<IReadOnlyCollection<T>> Get<T>() where T : ICalendarioDTO
         {
-            return Task.Run(()=> 
-            {
-                var prop = (from p in this.GetType().GetProperties()
-                            where p.PropertyType.IsGenericType
-                            let type = p.PropertyType.GetGenericArguments()[0]
-                            where type == typeof(T) || type.IsAssignableFrom(typeof(T))
-                            select p).FirstOrDefault();
-                if (prop == null)
-                    return null;
-                var value = prop.GetValue(this, null);
-                if (value == null)
-                    return null;
-                return (IReadOnlyCollection<T>)((IReadOnlyCollection<ICalendarioDTO>)value).OfType<T>().ToList();
-            });
+            IReadOnlyCollection<T> result = null;
+            var prop = (from p in this.GetType().GetProperties()
+                        where p.PropertyType.IsGenericType
+                        let type = p.PropertyType.GetGenericArguments()[0]
+                        where type == typeof(T) || type.IsAssignableFrom(typeof(T))
+                        select p).FirstOrDefault();
+            if (prop == null)
+                return Task.FromResult(result);
+            var value = prop.GetValue(this, null);
+            if (value == null)
+                return Task.FromResult(result);
+            result = ((IReadOnlyCollection<ICalendarioDTO>)value).OfType<T>().ToList();
+            return Task.FromResult(result);
         }
 
         public async Task<T> GetById<T>(string id) where T : IHaveId

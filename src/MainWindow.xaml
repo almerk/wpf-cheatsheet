@@ -77,7 +77,7 @@
             </ToolBarPanel>
         </Grid>
         <Grid x:Name="ContentLoadingPanel"  
-              Visibility="{Binding ViewModel.Content.IsLoading, Converter={StaticResource StringToOppositeVisibilityConverter}}"
+              Visibility="{Binding ViewModel.Content.IsLoading, Converter={StaticResource bool2VisibilityConverter}}"
               Panel.ZIndex="2" 
               Background="{StaticResource ControlBackgroundBrush}"
               VerticalAlignment="Stretch" 
