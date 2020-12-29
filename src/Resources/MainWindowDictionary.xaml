@@ -20,7 +20,8 @@
     </Style>
    
     <Style TargetType="mah:Badged" BasedOn="{StaticResource {x:Type mah:Badged}}">
-        <Setter Property="Panel.ZIndex" Value="1000" />
+        <Setter Property="Panel.ZIndex" Value="100" />
+        <Setter Property="Margin" Value="0 6 10 0"/>
     </Style>
     <Style TargetType="fa:FontAwesome">
         <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Control}}}"/>
@@ -79,6 +80,17 @@
                             </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="ListViewItem" x:Key="ToolBarListViewItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border>
+                        <ContentPresenter ContentSource="{TemplateBinding Content}"/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

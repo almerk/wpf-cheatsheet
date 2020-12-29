@@ -14,7 +14,7 @@ namespace StudyWPF.Services
         private static Calendario.DTO.DevelopOnly.TestRepository _repoMock = new Calendario.DTO.DevelopOnly.TestRepository();
         public async Task<string> GetJsonEnities<T>() where T: ICalendarioDTO
         {
-            await Task.Delay(200);//Request time imitation
+            await Task.Delay(20);//Request time imitation
             return  await _repoMock.GetJsonEntities<T>();
         }
     }

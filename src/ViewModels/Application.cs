@@ -14,8 +14,6 @@ namespace StudyWPF.ViewModels
     {
         private bool hasErrors;
         private WindowLoadedCommand windowLoaded;
-        private CalendarioViewContext _context;
-
         public bool CanHandleExceptions { get; set; } = false;
         public string Name => "📅 Informer";
         public bool HasErrors { get => hasErrors; private set { hasErrors = value; OnPropertyChanged(); } }

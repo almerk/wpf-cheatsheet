@@ -11,7 +11,7 @@ namespace StudyWPF.ViewModels.Utils
         where T : ICalendarioDTO
 
     {
-        private bool isVisible;
+        private bool isVisible = false;
 
         public GenericDTOViewModelDecorator(T value)
         {

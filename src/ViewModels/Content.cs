@@ -13,7 +13,7 @@ namespace StudyWPF.ViewModels
     {
   
         private ContentService _service;
-        private CalendarioViewContext _context;
+        public  CalendarioViewContext Context { get; }
         private CalendarioContextBuilderService _contextBuilderService;
         private bool isLoading = true;
 
@@ -22,15 +22,40 @@ namespace StudyWPF.ViewModels
 
         public Content(ContentService service, CalendarioViewContext context, CalendarioContextBuilderService contextBuilderService)
         {
+            Context = context;
             _service = service;
-            _context = context;
             _contextBuilderService = contextBuilderService;
+            this.PropertyChanged += Content_PropertyChanged;
         }
+
+        private async void Content_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName) 
+            {
+                case "IsLoading" when IsLoading == false:
+                    await InitializeVMProperties();
+                    break;
+                default:
+                    break;
+            };
+        }
+
         public async Task Load()
         {
-            await _contextBuilderService.Build(_context);
+            await _contextBuilderService.Build(Context);
             IsLoading = false;
         }
 
+        public async Task InitializeVMProperties()
+        {
+            foreach (var c in Context.CalendarTypesVM) 
+            {
+                c.InitializeProperties(Context);
+            }
+            foreach (var c in Context.CalendarsVM)
+            {
+                c.InitializeProperties(Context);
+            }
+        }
     }
 }

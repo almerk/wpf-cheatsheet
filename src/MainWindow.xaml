@@ -74,6 +74,56 @@
                         </ToggleButton>
                     </Grid>
                 </ToolBar>
+                <ToolBar Band="3" BandIndex="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Types"/>
+                        <ListView Grid.Row="1" 
+                                  ItemsSource="{Binding ViewModel.Content.Context.CalendarTypesVM}"
+                                  ItemContainerStyle="{StaticResource ToolBarListViewItem}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <mah:Badged Badge="{Binding CalendarsCount}">
+                                        <ToggleButton 
+                                            Content="{Binding Value.Name}"
+                                            IsChecked="{Binding IsVisible}" 
+                                            IsEnabled="{Binding IsActive}">
+                                        </ToggleButton>
+                                    </mah:Badged>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </ToolBar>
+                <ToolBar Band="4" BandIndex="4">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Calendars"/>
+                        <ListView Grid.Row="1" 
+                                  ItemsSource="{Binding ViewModel.Content.Context.CalendarsVM}"
+                                  ItemContainerStyle="{StaticResource ToolBarListViewItem}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <mah:Badged 
+                                         Badge="{Binding EventsCount}">
+                                        <ToggleButton 
+                                            Padding="2 6"
+                                            Content="{Binding Value.Name}"
+                                            IsChecked="{Binding IsVisible}"
+                                            IsEnabled="{Binding IsActive}">
+                                        </ToggleButton>
+                                    </mah:Badged>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </ToolBar>
             </ToolBarPanel>
         </Grid>
         <Grid x:Name="ContentLoadingPanel"  
